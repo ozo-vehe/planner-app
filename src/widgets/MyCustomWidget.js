@@ -11,14 +11,20 @@ export default function MyCustomWidget() {
   const [imageIndex, setImageIndex] = useState(0);
 
   const nextImage = async() => {
+    // Checks if the current image displayed is the  last image
+    // If it's not the last image the below code runs
     if((imageIndex + 1) < images.length) {
-      console.log(currentImage)
-      console.log(imageIndex);
+      // Sets the current image to the next image in the array 
+      // by adding 1 to the index of the previous image
       setCurrentImage(images[imageIndex + 1]);
+      // Reset the index of the current image 
       setImageIndex(imageIndex + 1);
     }
+    // If it is the last image the code below will run
     else {
+      //Sets the index of the current image to 0
       setImageIndex(0);
+      // Sets the current image to the first image in the array
       setCurrentImage(images[0]);
     }
   }
