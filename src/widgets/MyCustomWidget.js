@@ -8,13 +8,18 @@ import image5 from "../images/image5.jpeg";
 export default function MyCustomWidget() {
   const images = [image1, image2, image3, image4, image5];
   const [currentImage, setCurrentImage] = useState(images[0]);
+  const [imageIndex, setImageIndex] = useState(0);
 
   const nextImage = async() => {
-    let imageIndex = images.indexOf(currentImage);
-    if(imageIndex < images.length) {
+    if((imageIndex + 1) < images.length) {
       console.log(currentImage)
       console.log(imageIndex);
       setCurrentImage(images[imageIndex + 1]);
+      setImageIndex(imageIndex + 1);
+    }
+    else {
+      setImageIndex(0);
+      setCurrentImage(images[0]);
     }
   }
 
@@ -25,7 +30,7 @@ export default function MyCustomWidget() {
         <img src={currentImage} alt="Current Gallery" />
       </div>
 
-      <div className="buttons">
+      <div className="btn">
         <button className="next" onClick={nextImage}>Next</button>
       </div>
     </div>
